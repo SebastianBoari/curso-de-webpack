@@ -10,10 +10,16 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].[contenthash].js",
-        assetModuleFilename: 'assets/images/[hash][ext][query]'
+        assetModuleFilename: "assets/images/[hash][ext][query]"
     },
     resolve: {
-        extensions: ['.js']
+        extensions: [".js"],
+        alias: {
+            "@utils": path.resolve(__dirname, "src/utils/"),
+            "@templates": path.resolve(__dirname, "src/templates/"),
+            "@styles": path.resolve(__dirname, "src/styles/"),
+            "@images": path.resolve(__dirname, "src/assets/images/"),
+        }
     },
     module: {
         rules: [
@@ -57,7 +63,7 @@ module.exports = {
             filename: "./index.html"
         }),
         new MiniCssExtractPlugin({
-            filename: 'assets/[name].[contenthash].css'
+            filename: "assets/[name].[contenthash].css"
         }),
         new CopyPlugin({
             patterns: [
